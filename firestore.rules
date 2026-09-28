@@ -1,0 +1,154 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwnerOrAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == 'physicaltospiritual@gmail.com' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['owner', 'super_admin', 'admin'])
+      );
+    }
+
+    // Test doc for connection check
+    match /test/{testId} {
+      allow read: if true;
+    }
+
+    // Global App Settings & Branding
+    match /appSettings/{docId} {
+      allow read: if true;
+      allow write: if isOwnerOrAdmin();
+    }
+
+    match /branding/{docId} {
+      allow read: if true;
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Home Page Layout Sections
+    match /homeSections/{docId} {
+      allow read: if true;
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // App Navigation (Drawer and Bottom Navigation)
+    match /navigation/{docId} {
+      allow read: if true;
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Wisdom Library (Articles, Books, Sutras)
+    match /wisdom/{docId} {
+      allow read: if resource.data.status == 'published' || isOwnerOrAdmin();
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Sadhna Routines & Practices
+    match /sadhna/{docId} {
+      allow read: if resource.data.status == 'published' || isOwnerOrAdmin();
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Video Library
+    match /videos/{docId} {
+      allow read: if resource.data.status == 'published' || isOwnerOrAdmin();
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Audio Library & Podcasts
+    match /audio/{docId} {
+      allow read: if resource.data.status == 'published' || isOwnerOrAdmin();
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Quotes and Sutras
+    match /quotes/{docId} {
+      allow read: if resource.data.status == 'published' || isOwnerOrAdmin();
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Courses and Learning Programs
+    match /courses/{docId} {
+      allow read: if resource.data.status == 'published' || isOwnerOrAdmin();
+      allow write: if isOwnerOrAdmin();
+    }
+
+    match /courseModules/{docId} {
+      allow read: if true;
+      allow write: if isOwnerOrAdmin();
+    }
+
+    match /lessons/{docId} {
+      allow read: if true;
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Live and Upcoming Sessions
+    match /sessions/{docId} {
+      allow read: if resource.data.status == 'published' || isOwnerOrAdmin();
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Custom Pages (About, Philosophy, Terms, Privacy)
+    match /pages/{docId} {
+      allow read: if resource.data.status == 'published' || isOwnerOrAdmin();
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Central Media Assets
+    match /media/{docId} {
+      allow read: if true;
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Categories and Tags
+    match /categories/{docId} {
+      allow read: if true;
+      allow write: if isOwnerOrAdmin();
+    }
+
+    match /tags/{docId} {
+      allow read: if true;
+      allow write: if isOwnerOrAdmin();
+    }
+
+    // Community Discussions
+    match /communityPosts/{docId} {
+      allow read: if true;
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() && (request.auth.uid == resource.data.authorId || isOwnerOrAdmin());
+    }
+
+    match /comments/{docId} {
+      allow read: if true;
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() && (request.auth.uid == resource.data.authorId || isOwnerOrAdmin());
+    }
+
+    // User Profiles and Authentication
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isOwnerOrAdmin());
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() && (request.auth.uid == userId || isOwnerOrAdmin());
+      allow delete: if isOwnerOrAdmin();
+    }
+
+    // Audit Log (Append-only by Admin, Strictly Immutable)
+    match /auditLogs/{logId} {
+      allow read: if isOwnerOrAdmin();
+      allow create: if isOwnerOrAdmin();
+      allow update, delete: if false;
+    }
+  }
+}

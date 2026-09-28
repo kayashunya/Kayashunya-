@@ -1,0 +1,300 @@
+{
+  "entities": {
+    "appSettings": {
+      "title": "AppSettings",
+      "description": "Global application configuration and contact details",
+      "type": "object",
+      "properties": {
+        "appName": { "type": "string", "maxLength": 100 },
+        "appDescription": { "type": "string", "maxLength": 1000 },
+        "tagline": { "type": "string", "maxLength": 200 },
+        "websiteUrl": { "type": "string", "maxLength": 300 },
+        "contactEmail": { "type": "string", "maxLength": 150 },
+        "contactPhone": { "type": "string", "maxLength": 50 },
+        "address": { "type": "string", "maxLength": 300 },
+        "copyrightText": { "type": "string", "maxLength": 200 }
+      },
+      "required": ["appName"]
+    },
+    "branding": {
+      "title": "AppBranding",
+      "description": "Visual theme and asset URLs for dynamic branding",
+      "type": "object",
+      "properties": {
+        "logoUrl": { "type": "string", "maxLength": 1000 },
+        "appIconUrl": { "type": "string", "maxLength": 1000 },
+        "faviconUrl": { "type": "string", "maxLength": 1000 },
+        "splashImageUrl": { "type": "string", "maxLength": 1000 },
+        "primaryColor": { "type": "string", "maxLength": 30 },
+        "secondaryColor": { "type": "string", "maxLength": 30 },
+        "accentColor": { "type": "string", "maxLength": 30 },
+        "canvasBgLight": { "type": "string", "maxLength": 30 },
+        "canvasBgDark": { "type": "string", "maxLength": 30 },
+        "fontHeading": { "type": "string", "maxLength": 100 },
+        "fontBody": { "type": "string", "maxLength": 100 }
+      }
+    },
+    "homeSection": {
+      "title": "HomeSection",
+      "description": "Customizable section displayed on the mobile/web home page",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 100 },
+        "title": { "type": "string", "maxLength": 200 },
+        "subtitle": { "type": "string", "maxLength": 300 },
+        "type": { "type": "string", "maxLength": 50 },
+        "isEnabled": { "type": "boolean" },
+        "order": { "type": "number" },
+        "buttonLabel": { "type": "string", "maxLength": 100 },
+        "buttonDestination": { "type": "string", "maxLength": 200 }
+      },
+      "required": ["id", "title", "type", "order"]
+    },
+    "navigationMenuItem": {
+      "title": "NavigationMenuItem",
+      "description": "Drawer menu or bottom navigation bar items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 100 },
+        "label": { "type": "string", "maxLength": 100 },
+        "iconName": { "type": "string", "maxLength": 100 },
+        "destination": { "type": "string", "maxLength": 200 },
+        "order": { "type": "number" },
+        "isEnabled": { "type": "boolean" }
+      },
+      "required": ["id", "label", "destination", "order"]
+    },
+    "wisdom": {
+      "title": "WisdomContent",
+      "description": "Articles, discourses, and digital books for the Wisdom library",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 300 },
+        "subtitle": { "type": "string", "maxLength": 500 },
+        "slug": { "type": "string", "maxLength": 200 },
+        "author": { "type": "string", "maxLength": 150 },
+        "category": { "type": "string", "maxLength": 100 },
+        "type": { "type": "string", "maxLength": 50 },
+        "content": { "type": "string", "maxLength": 500000 },
+        "excerpt": { "type": "string", "maxLength": 1000 },
+        "readingTimeMinutes": { "type": "number" },
+        "coverImageUrl": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "maxLength": 30 },
+        "publishedAt": { "type": "string", "maxLength": 50 },
+        "likesCount": { "type": "number" }
+      },
+      "required": ["id", "title", "author", "content", "status"]
+    },
+    "sadhna": {
+      "title": "SadhnaContent",
+      "description": "Daily spiritual practices, meditation routines, yoga, and breathwork",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 300 },
+        "subtitle": { "type": "string", "maxLength": 500 },
+        "category": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "instructions": { "type": "string", "maxLength": 20000 },
+        "durationMinutes": { "type": "number" },
+        "difficulty": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "maxLength": 30 },
+        "order": { "type": "number" }
+      },
+      "required": ["id", "title", "category", "status"]
+    },
+    "video": {
+      "title": "VideoContent",
+      "description": "Video talks, satsangs, and visual discourses",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 300 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "category": { "type": "string", "maxLength": 100 },
+        "videoUrl": { "type": "string", "maxLength": 1000 },
+        "thumbnailUrl": { "type": "string", "maxLength": 1000 },
+        "duration": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "maxLength": 30 }
+      },
+      "required": ["id", "title", "videoUrl", "status"]
+    },
+    "audio": {
+      "title": "AudioContent",
+      "description": "Audio discourses, meditations, and podcasts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 300 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "category": { "type": "string", "maxLength": 100 },
+        "audioUrl": { "type": "string", "maxLength": 1000 },
+        "duration": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "maxLength": 30 }
+      },
+      "required": ["id", "title", "audioUrl", "status"]
+    },
+    "quote": {
+      "title": "QuoteContent",
+      "description": "Spiritual sutras and sharable quotes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "quote": { "type": "string", "maxLength": 2000 },
+        "author": { "type": "string", "maxLength": 150 },
+        "category": { "type": "string", "maxLength": 100 },
+        "status": { "type": "string", "maxLength": 30 },
+        "sharesCount": { "type": "number" }
+      },
+      "required": ["id", "quote", "author", "status"]
+    },
+    "course": {
+      "title": "CourseContent",
+      "description": "Structured spiritual learning programs and modules",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 300 },
+        "subtitle": { "type": "string", "maxLength": 500 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "instructor": { "type": "string", "maxLength": 150 },
+        "status": { "type": "string", "maxLength": 30 }
+      },
+      "required": ["id", "title", "status"]
+    },
+    "session": {
+      "title": "OnlineSession",
+      "description": "Live webinar or interactive session",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 300 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "instructor": { "type": "string", "maxLength": 150 },
+        "scheduledDate": { "type": "string", "maxLength": 50 },
+        "meetingLink": { "type": "string", "maxLength": 500 },
+        "status": { "type": "string", "maxLength": 30 }
+      },
+      "required": ["id", "title", "status"]
+    },
+    "page": {
+      "title": "EditablePage",
+      "description": "Customizable content page (About, Philosophy, Terms, etc.)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "slug": { "type": "string", "maxLength": 100 },
+        "title": { "type": "string", "maxLength": 200 },
+        "content": { "type": "string", "maxLength": 200000 },
+        "status": { "type": "string", "maxLength": 30 }
+      },
+      "required": ["id", "slug", "title", "status"]
+    },
+    "media": {
+      "title": "MediaItem",
+      "description": "Asset metadata in the central media library",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "url": { "type": "string", "maxLength": 1000 },
+        "type": { "type": "string", "maxLength": 50 },
+        "sizeBytes": { "type": "number" },
+        "folder": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["id", "name", "url", "type"]
+    },
+    "user": {
+      "title": "UserRecord",
+      "description": "User profile, role, and sadhana statistics",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 200 },
+        "displayName": { "type": "string", "maxLength": 150 },
+        "role": { "type": "string", "maxLength": 50 },
+        "isSuspended": { "type": "boolean" },
+        "streakDays": { "type": "number" },
+        "totalHoursRead": { "type": "number" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "auditLog": {
+      "title": "AuditLogEntry",
+      "description": "Immutable ledger of admin CMS operations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "actorEmail": { "type": "string", "maxLength": 200 },
+        "action": { "type": "string", "maxLength": 50 },
+        "entityType": { "type": "string", "maxLength": 100 },
+        "details": { "type": "string", "maxLength": 2000 },
+        "timestamp": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["actorEmail", "action", "entityType", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/appSettings/{settingId}": {
+      "schema": "appSettings",
+      "description": "Global application configuration documents"
+    },
+    "/branding/{brandId}": {
+      "schema": "branding",
+      "description": "Visual theme and asset settings"
+    },
+    "/homeSections/{sectionId}": {
+      "schema": "homeSection",
+      "description": "Modular home page layout sections"
+    },
+    "/navigation/{navId}": {
+      "schema": "navigationMenuItem",
+      "description": "Drawer and bottom navigation items"
+    },
+    "/wisdom/{wisdomId}": {
+      "schema": "wisdom",
+      "description": "Articles, books, and wisdom readings"
+    },
+    "/sadhna/{sadhnaId}": {
+      "schema": "sadhna",
+      "description": "Daily sadhana routines and practices"
+    },
+    "/videos/{videoId}": {
+      "schema": "video",
+      "description": "Video catalog entries"
+    },
+    "/audio/{audioId}": {
+      "schema": "audio",
+      "description": "Audio recordings and podcasts"
+    },
+    "/quotes/{quoteId}": {
+      "schema": "quote",
+      "description": "Daily wisdom quotes and sutras"
+    },
+    "/courses/{courseId}": {
+      "schema": "course",
+      "description": "Courses and multi-module programs"
+    },
+    "/sessions/{sessionId}": {
+      "schema": "session",
+      "description": "Live and upcoming spiritual sessions"
+    },
+    "/pages/{pageId}": {
+      "schema": "page",
+      "description": "Editable CMS pages"
+    },
+    "/media/{mediaId}": {
+      "schema": "media",
+      "description": "Media library assets metadata"
+    },
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "User profiles and permissions"
+    },
+    "/auditLogs/{logId}": {
+      "schema": "auditLog",
+      "description": "Administrative audit trail"
+    }
+  }
+}

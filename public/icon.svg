@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="60%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#B45309" />
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+  <!-- Background Disc with soft amber tint -->
+  <rect width="512" height="512" rx="128" fill="#1C1917" />
+  <circle cx="256" cy="256" r="190" fill="#292524" stroke="#44403C" stroke-width="4" />
+  
+  <!-- Sacred Geometry Sun & Lotus Ring -->
+  <circle cx="256" cy="256" r="140" fill="url(#sunGrad)" filter="url(#shadow)" />
+  <circle cx="256" cy="256" r="110" fill="none" stroke="#FEF3C7" stroke-width="3" stroke-dasharray="8 6" />
+
+  <!-- Radiating Petals -->
+  <g stroke="#FDE68A" stroke-width="4" stroke-linecap="round">
+    <line x1="256" y1="70" x2="256" y2="95" />
+    <line x1="256" y1="417" x2="256" y2="442" />
+    <line x1="70" y1="256" x2="95" y2="256" />
+    <line x1="417" y1="256" x2="442" y2="256" />
+    <line x1="125" y1="125" x2="142" y2="142" />
+    <line x1="370" y1="370" x2="387" y2="387" />
+    <line x1="125" y1="387" x2="142" y2="370" />
+    <line x1="370" y1="142" x2="387" y2="125" />
+  </g>
+
+  <!-- Central Bindu / Meditative Eye -->
+  <circle cx="256" cy="256" r="45" fill="#1C1917" />
+  <circle cx="256" cy="256" r="28" fill="#F59E0B" />
+  <circle cx="256" cy="256" r="12" fill="#FEF3C7" />
+</svg>

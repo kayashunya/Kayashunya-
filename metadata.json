@@ -1,0 +1,6 @@
+{
+  "name": "Kayasun - Spiritual Wisdom & Sadhana",
+  "description": "Minimalist, reader-centric spiritual wisdom app inspired by Acharya Prashant. Complete Flutter architecture, clean e-reader, Sadhana tracker, and live interactive mobile experience.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
